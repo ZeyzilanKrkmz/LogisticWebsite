@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# Docker
+postgres_data/
+
+# AI/ML
+chroma_db/
+*.log
+
+# Frontend (İlerisi için)
+node_modules/
+dist/

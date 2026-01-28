@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  # --- VERİTABANI ---
+  db:
+    image: postgres:15
+    container_name: logistics_db
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: logistics_app
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # --- MESAJ KUYRUĞU ---
+  redis:
+    image: redis:alpine
+    container_name: logistics_redis
+    ports:
+      - "6379:6379"
+
+  # --- AUTH SERVİSİ ---
+  auth-service:
+    build:
+      context: .
+      dockerfile: services/auth/Dockerfile
+    env_file: .env
+    ports:
+      - "8001:8000"
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/logistics_app
+      - SECRET_KEY=cok-gizli-anahtar
+    depends_on:
+      - db
+
+  # --- ORDER SERVİSİ ---
+  order-service:
+    build:
+      context: .
+      dockerfile: services/order/Dockerfile
+    ports:
+      - "8002:8000"
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/logistics_app
+      - REDIS_URL=redis://redis:6379/0
+    depends_on:
+      - db
+      - redis
+
+  # DİĞER SERVİSLERİ (Tracking, Chatbot vb.) benzer şekilde ekle...
+
+volumes:
+  postgres_data:

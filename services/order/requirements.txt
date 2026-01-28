@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+sqlalchemy
+pyscopg2-binary
+python-jose
+passlib[bcrypt]
+python-dotenv
+requests
+pytest
+pytest-asyncio
+pytest
+pytest-asyncio
+httpx
+email-validator
