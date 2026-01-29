@@ -8,7 +8,7 @@ pwd_context=CryptContext(schemes=["bcrypt"],deprecated="auto")
 SECRET_KEY="your_secret_key"
 ALGORITHM="HS256"
 
-def hash_password(password:str):
+def get_password_hash(password:str):
     return pwd_context.hash(password)
 
 def verify_password(plain_password,hashed_password):

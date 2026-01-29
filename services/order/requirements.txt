@@ -8,7 +8,6 @@ python-dotenv
 requests
 pytest
 pytest-asyncio
-pytest
-pytest-asyncio
 httpx
 email-validator
+redis
