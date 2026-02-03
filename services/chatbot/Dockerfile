@@ -1,7 +1,6 @@
-# 1. Aşama: Hafif bir Python imajı
+# services/chatbot/Dockerfile
 FROM python:3.11-slim
 
-# 2. Aşama: Sistem bağımlılıklarını yükle (Postgres bağlantısı için gerekebilir)
 RUN apt-get update && apt-get install -y \
     build-essential \
     libpq-dev \
@@ -9,18 +8,15 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 
-# 3. Aşama: Bağımlılıklar (Önce kopyalamak 'cache' avantajı sağlar)
-COPY services/auth/requirements.txt ./services/auth/requirements.txt
-RUN pip install --no-cache-dir -r ./services/auth/requirements.txt
+# Chatbot gereksinimlerini yükle
+COPY services/chatbot/requirements.txt ./services/chatbot/requirements.txt
+RUN pip install --no-cache-dir -r ./services/chatbot/requirements.txt
 
-# 4. Aşama: Shared ve Servis kodlarını kopyala
 COPY shared/ ./shared/
 COPY services/chatbot/ ./services/chatbot/
 
-# 5. Aşama: Python yolu ayarı
 ENV PYTHONPATH=/app
-
-# Servis hangi portta çalışacaksa o (Örn: Auth için 8000)
 EXPOSE 8000
 
-CMD ["uvicorn", "services.auth.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Chatbot API'sini çalıştır
+CMD ["uvicorn", "services.chatbot.main:app", "--host", "0.0.0.0", "--port", "8000"]

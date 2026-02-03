@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  @apply font-sans bg-sand text-earth;
+}
+
+/* İnce, kurumsal scrollbar (opsiyonel) */
+*::-webkit-scrollbar {
+  width: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: rgba(75,54,33,0.08);
+}
+*::-webkit-scrollbar-thumb {
+  background: rgba(45,79,30,0.35);
+  border-radius: 999px;
+  border: 2px solid rgba(245,245,220,1);
+}

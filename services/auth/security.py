@@ -9,7 +9,12 @@ SECRET_KEY="your_secret_key"
 ALGORITHM="HS256"
 
 def get_password_hash(password:str):
+    if isinstance(password,str):
+        password=password.encode('utf-8')
     return pwd_context.hash(password)
+    
+
+
 
 def verify_password(plain_password,hashed_password):
     return pwd_context.verify(plain_password,hashed_password)
