@@ -1,28 +1,50 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* frontend/src/styles/globals.css */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&display=swap");
+@import "tailwindcss";
 
 :root {
   color-scheme: light;
 }
 
-html, body {
+html,
+body,
+#root {
   height: 100%;
 }
 
 body {
-  @apply font-sans bg-sand text-earth;
+  font-family: "Noto Sans", sans-serif;
+  background: #e6e6e6;
+  color: #2b2b2b;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* İnce, kurumsal scrollbar (opsiyonel) */
+:focus-visible {
+  outline: 2px solid rgba(45, 79, 30, 0.55);
+  outline-offset: 2px;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(75, 54, 33, 0.35) rgba(31, 58, 20, 0.06);
+}
+
 *::-webkit-scrollbar {
   width: 10px;
+  height: 10px;
 }
+
 *::-webkit-scrollbar-track {
-  background: rgba(75,54,33,0.08);
-}
-*::-webkit-scrollbar-thumb {
-  background: rgba(45,79,30,0.35);
+  background: rgba(31, 58, 20, 0.06);
   border-radius: 999px;
-  border: 2px solid rgba(245,245,220,1);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(75, 54, 33, 0.35);
+  border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(75, 54, 33, 0.5);
 }

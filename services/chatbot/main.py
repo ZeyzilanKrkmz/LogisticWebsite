@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from services.chatbot.agent_logic import create_logistics_agent
+from LogisticWebsite.services.chatbot.agent_logic import create_logistics_agent
 import os
 
 app = FastAPI()

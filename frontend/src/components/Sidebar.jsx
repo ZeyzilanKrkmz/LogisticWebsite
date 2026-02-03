@@ -1,86 +1,161 @@
-import React from "react";
-import { Route, Leaf, History, X } from "lucide-react";
-import OrderTrackingCard from "./OrderTrackingCard";
+// frontend/src/components/Sidebar.jsx
+import React, { useEffect, useMemo, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
+import {
+  Home,
+  LayoutDashboard,
+  ClipboardList,
+  Truck,
+  Route,
+  Bot,
+  Headset,
+  Menu,
+  X,
+} from "lucide-react";
 
-const routes = [
-  { id: 1, name: "Aliağa → Manisa", meta: "Bugün 10:30" },
-  { id: 2, name: "İzmir → Aydın", meta: "Dün 16:10" },
-  { id: 3, name: "Manisa → Balıkesir", meta: "28 Oca 09:05" },
+const navItems = [
+  { label: "Ana Sayfa", icon: Home, path: "/" },
+  { label: "Genel Bakış", icon: LayoutDashboard, path: "/overview" },
+  { label: "Siparişler", icon: ClipboardList, path: "/orders" },
+  { label: "Sevkiyat", icon: Truck, path: "/shipments" },
+  { label: "Rotalar", icon: Route, path: "/routes" },
+  { label: "AI Chatbot", icon: Bot, path: "/chat" },
+  { label: "İletişim", icon: Headset, path: "/contact" },
 ];
 
-export default function Sidebar({ open, onClose }) {
+export default function Sidebar() {
+  const [open, setOpen] = useState(false);
+  const location = useLocation();
+
+  const items = useMemo(() => navItems, []);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [location.pathname]);
+
   return (
     <>
-      {/* Mobile overlay */}
+      <div className="lg:hidden fixed top-4 left-4 z-50">
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          className="inline-flex items-center justify-center rounded-2xl bg-[#F5F5DC] shadow-md px-3 py-2 text-[#2B2B2B] hover:shadow-sm active:scale-[0.99] transition focus-visible:ring-2 focus-visible:ring-[#2D4F1E]/35"
+          aria-label={open ? "Menüyü kapat" : "Menüyü aç"}
+        >
+          {open ? <X size={18} /> : <Menu size={18} />}
+        </button>
+      </div>
+
       <div
         className={[
-          "fixed inset-0 z-40 bg-earth/40 backdrop-blur-sm transition-opacity md:hidden",
-          open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none",
+          "lg:hidden fixed inset-0 z-40 transition",
+          open ? "bg-black/35" : "pointer-events-none bg-transparent",
         ].join(" ")}
-        onClick={onClose}
+        onClick={() => setOpen(false)}
+        aria-hidden={!open}
       />
 
       <aside
         className={[
-          "fixed z-50 md:static md:z-auto",
-          "top-0 left-0 h-full md:h-auto",
-          "w-[86%] max-w-[360px] md:w-full",
-          "bg-sand md:bg-transparent",
-          "p-4 md:p-0",
-          "transition-transform md:transition-none",
-          open ? "translate-x-0" : "-translate-x-full md:translate-x-0",
+          "fixed lg:static top-0 left-0 z-50 h-full w-[280px] shrink-0",
+          "bg-[#1F3A14] text-[#F5F5DC]",
+          "shadow-md lg:shadow-none",
+          "transition-transform duration-200",
+          open ? "translate-x-0" : "-translate-x-full lg:translate-x-0",
         ].join(" ")}
       >
-        <div className="rounded-3xl bg-sand md:bg-white md:border md:border-earth/10 md:shadow-soft p-4 md:p-5">
-          <div className="flex items-start justify-between gap-3">
-            <div className="flex items-center gap-3">
-              <div className="h-11 w-11 rounded-2xl bg-forest grid place-items-center shadow-sm">
-                <Leaf className="h-6 w-6 text-sand" />
+        <div className="h-full flex flex-col">
+          <div className="px-5 pt-6 pb-4">
+            <div className="rounded-2xl bg-[#2D4F1E]/35 px-4 py-4 shadow-sm">
+              <div className="text-[13px] uppercase tracking-wider text-[#F5F5DC]/80">
+                Logistics Platform
               </div>
-              <div>
-                <p className="text-xs text-earth/60">Kullanıcı Profili</p>
-                <p className="text-sm font-bold text-earth">Operasyon Sorumlusu</p>
-                <p className="text-xs text-earth/60">Lojistik Kontrol Paneli</p>
+              <div className="mt-1 text-lg font-semibold text-[#F5F5DC]">
+                EarthTech Control
+              </div>
+              <div className="mt-2 text-xs text-[#F5F5DC]/70 leading-relaxed">
+                Operasyon • Görünürlük • Karar Destek
               </div>
             </div>
-
-            <button
-              className="md:hidden inline-flex h-9 w-9 items-center justify-center rounded-xl border border-earth/15 bg-white"
-              onClick={onClose}
-              aria-label="Kapat"
-            >
-              <X className="h-5 w-5 text-earth" />
-            </button>
           </div>
 
-          <div className="mt-5">
-            <div className="flex items-center gap-2 text-earth font-semibold">
-              <History className="h-4 w-4 text-earth/70" />
-              <span className="text-sm">Geçmiş Rotalar</span>
+          <nav className="px-3 pb-6">
+            <div className="px-3 text-xs font-semibold tracking-wide text-[#F5F5DC]/60 uppercase">
+              Navigasyon
             </div>
 
-            <div className="mt-3 space-y-2">
-              {routes.map((r) => (
-                <div
-                  key={r.id}
-                  className="rounded-2xl bg-white border border-earth/10 px-4 py-3 hover:border-forest/30 transition"
-                >
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="min-w-0">
-                      <p className="text-sm font-semibold text-earth truncate">
-                        {r.name}
-                      </p>
-                      <p className="text-xs text-earth/60">{r.meta}</p>
-                    </div>
-                    <Route className="h-4 w-4 text-forest shrink-0" />
-                  </div>
+            <div className="mt-3 space-y-1">
+              {items.map((it) => {
+                const Icon = it.icon;
+                return (
+                  <NavLink
+                    key={it.path}
+                    to={it.path}
+                    end={it.path === "/"}
+                    className={({ isActive }) =>
+                      [
+                        "w-full flex items-center gap-3 rounded-2xl px-4 py-3 text-left transition outline-none",
+                        "hover:bg-[#2D4F1E]/25 focus-visible:ring-2 focus-visible:ring-[#F5F5DC]/40",
+                        isActive ? "bg-[#2D4F1E]/30 shadow-sm" : "bg-transparent",
+                      ].join(" ")
+                    }
+                  >
+                    {({ isActive }) => (
+                      <>
+                        <span
+                          className={[
+                            "h-9 w-9 rounded-2xl grid place-items-center",
+                            isActive ? "bg-[#2D4F1E]/35" : "bg-[#2D4F1E]/15",
+                          ].join(" ")}
+                        >
+                          <Icon size={18} className="text-[#F5F5DC]" />
+                        </span>
+
+                        <div className="flex-1 min-w-0">
+                          <div className="text-sm font-semibold text-[#F5F5DC] truncate">
+                            {it.label}
+                          </div>
+                          <div className="text-[11px] text-[#F5F5DC]/65 truncate">
+                            {it.path === "/" && "Operasyon komuta merkezi"}
+                            {it.path === "/overview" && "KPI & risk görünümü"}
+                            {it.path === "/orders" && "Sipariş akışı & SLA"}
+                            {it.path === "/shipments" && "Sevkiyat takibi"}
+                            {it.path === "/routes" && "Rota performansı"}
+                            {it.path === "/chat" && "Karar destek asistanı"}
+                            {it.path === "/contact" && "Destek & acil iletişim"}
+                          </div>
+                        </div>
+
+                        <span
+                          className={[
+                            "h-10 w-[3px] rounded-full transition",
+                            isActive ? "bg-[#F5F5DC]" : "bg-transparent",
+                          ].join(" ")}
+                          aria-hidden="true"
+                        />
+                      </>
+                    )}
+                  </NavLink>
+                );
+              })}
+            </div>
+          </nav>
+
+          <div className="mt-auto px-5 pb-6">
+            <div className="rounded-2xl bg-[#2D4F1E]/20 px-4 py-4 shadow-sm">
+              <div className="text-xs text-[#F5F5DC]/70">Durum</div>
+              <div className="mt-1 flex items-center justify-between">
+                <div className="text-sm font-semibold text-[#F5F5DC]">
+                  Operasyon İzleme
                 </div>
-              ))}
+                <span className="text-[11px] px-2 py-1 rounded-full bg-[#F5F5DC]/15 text-[#F5F5DC]">
+                  Live
+                </span>
+              </div>
+              <div className="mt-2 text-[11px] leading-relaxed text-[#F5F5DC]/70">
+                Kritik gecikme ve sapma sinyalleri üst barda görünür.
+              </div>
             </div>
-          </div>
-
-          <div className="mt-5">
-            <OrderTrackingCard />
           </div>
         </div>
       </aside>

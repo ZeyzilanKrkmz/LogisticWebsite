@@ -1,32 +1,32 @@
+// tailwind.config.js
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,jsx}"
-  ],
+  content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
       colors: {
-        forest: "#2D4F1E",
-        earth: "#4B3621",
-        sand: "#F5F5DC",
-      },
-      fontFamily: {
-        sans: ['"Noto Sans"', "ui-sans-serif", "system-ui", "Segoe UI", "Roboto", "Arial", "sans-serif"],
-      },
-      boxShadow: {
-        soft: "0 10px 30px rgba(45,79,30,0.10)",
-      },
-      keyframes: {
-        pulseDots: {
-          "0%, 100%": { transform: "translateY(0)", opacity: "0.4" },
-          "50%": { transform: "translateY(-2px)", opacity: "1" },
+        primary: {
+          forest: "#2D4F1E",
+          dark: "#1F3A14",
+        },
+        secondary: {
+          earth: "#4B3621",
+        },
+        surface: {
+          sand: "#F5F5DC",
+        },
+        bg: {
+          warm: "#E6E6E6",
+        },
+        text: {
+          dark: "#2B2B2B",
         },
       },
-      animation: {
-        "dots-1": "pulseDots 1s infinite",
-        "dots-2": "pulseDots 1s infinite 0.15s",
-        "dots-3": "pulseDots 1s infinite 0.3s",
+      fontFamily: {
+        sans: ['"Noto Sans"', "sans-serif"],
+      },
+      boxShadow: {
+        soft: "0 6px 18px rgba(43,43,43,0.08)",
       },
     },
   },
