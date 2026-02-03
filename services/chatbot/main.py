@@ -4,7 +4,7 @@ import os
 
 app = FastAPI()
 
-# Uygulama başlarken ajanı tek seferlik oluştur
+
 try:
     agent_executor = create_logistics_agent()
     print("✅ Gemini Ajanı başarıyla yüklendi!")
