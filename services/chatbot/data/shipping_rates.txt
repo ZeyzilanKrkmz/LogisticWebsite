@@ -1,0 +1,43 @@
+DOSYA: shipping_rates.txt
+
+KONU: Konteyner Taşımacılığında Fiyatlandırma Mantığı
+
+Konteyner taşımacılığı fiyatları sabit değildir. Fiyatlandırma; yükün özellikleri, taşınacak mesafe ve operasyonel gerekliliklere göre değişkenlik gösterir. Bu nedenle her taşıma talebi özel olarak değerlendirilir.
+
+FİYATLANDIRMAYI ETKİLEYEN ANA FAKTÖRLER
+
+- Taşıma mesafesi (kilometre bazlı hesaplama)
+- Çıkış limanı ve varış noktası
+- Konteyner tipi (20 DC, 40 DC, 40 HC, Open Top, Reefer vb.)
+- Taşıyıcı araç (standart tır, frigo, lowbed, konteyner şasisi)
+- Yükün ağırlığı ve hacmi
+- Yükün standart veya standart dışı olması
+- Tehlikeli madde (ADR) veya özel izin gereksinimi
+- Acil taşıma talebi
+- Ek hizmetler (sigorta, depolama, bekleme, elleçleme)
+
+ÖRNEK FİYAT HESAPLAMA SENARYOLARI
+
+Senaryo 1:
+- Yük: Standart yük
+- Konteyner: 20 DC
+- Çıkış: Ambarlı Limanı
+- Varış: Ankara
+- Araç: Konteyner taşıyıcı şasi
+
+Bu senaryoda fiyat; Ambarlı–Ankara arası km mesafesi, standart araç kullanımı ve ek izin gerekmemesi nedeniyle temel taşıma bedeli üzerinden hesaplanır.
+
+Senaryo 2:
+- Yük: Standart dışı (oversize)
+- Konteyner: Flat Rack
+- Çıkış: Aliağa Limanı
+- Varış: Gaziantep
+- Araç: Lowbed
+- Ek gereklilik: Özel geçiş izinleri
+
+Bu senaryoda fiyat; uzun mesafe, özel araç, izin belgeleri ve operasyon süresi dikkate alınarak artırımlı şekilde hesaplanır.
+
+ÖNEMLİ NOT
+
+Bu dokümanda yer alan fiyatlandırma örnekleri bilgilendirme amaçlıdır.
+Kesin fiyat, yük detayları ve operasyon şartları netleştikten sonra belirlenir.

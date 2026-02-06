@@ -1,0 +1,28 @@
+DOSYA: truck_types.txt
+
+KONU: Tır Türleri ve Kullanım Alanları
+
+TENTELİ TIR
+
+- Standart paletli ve kolili yükler
+- Hızlı yükleme ve boşaltma imkanı
+
+KONTEYNER TAŞIYICI ŞASİ
+
+- 20 DC, 40 DC, 40 HC konteyner taşımaları
+- Liman çıkışlı operasyonlar
+
+FRİGO (SOĞUTMALI TIR)
+
+- Soğuk zincir yükler
+- Isı kontrollü taşıma gerektiren ürünler
+
+LOWBED
+
+- Standart dışı ve ağır yükler
+- Proje taşımaları
+
+UZUN ARAÇ / ÖZEL İZİNLİ ARAÇLAR
+
+- Oversize yükler
+- Özel güzergah ve izin gerektirir

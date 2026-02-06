@@ -1,0 +1,88 @@
+order_statuses.txt
+
+Amaç
+- Bu dosya, liman çıkışlı konteyner TIR taşımacılığında sipariş (sevkiyat) yaşam döngüsü durumlarını açıklar.
+- Açıklamalar; müşteri bilgilendirmesi, operasyon içi iletişim ve chatbot yanıt standardı için embedding-dostu kısa metinlerle yazılmıştır.
+- Not: Bu metinler gerçek zamanlı veri iddia etmez. Güncel durum için sistem üzerinden kontrol gerekir.
+
+Genel Notlar
+- “Planlanan teslim tarihi” bir tahmindir. Trafik, liman yoğunluğu, evrak, güvenlik kontrolleri ve hava koşulları etkileyebilir.
+- Chatbot; kesin hukuki taahhüt vermez, uygun yerde operasyon ekibine yönlendirir.
+- Özel notlar (ADR, oversize/gabari dışı, ekstra ekipman) süreci etkileyebilir.
+
+Durum: Sipariş Alındı
+- Anlamı: Müşteri talebi sisteme kaydedildi ve referans (sipariş numarası) oluştu.
+- Bu aşamada müşteri ne beklemeli: Evrak ve detay doğrulaması için ilk kontrol yapılır.
+- Tipik sonraki adım: Belgeler kontrolü veya eksik evrak bildirimi.
+
+Durum: Belgeler Bekleniyor
+- Anlamı: Operasyonun ilerlemesi için gerekli evrak/bilgi seti tam değil.
+- Olası nedenler: Konteyner numarası, yük bilgisi, ADR sınıfı, teslimat adresi, randevu bilgisi eksik/uyuşmuyor.
+- Müşteri ne beklemeli: Eksik/uyumsuz kalemler netleştirilince planlama başlar.
+- Müşteriden beklenen: Talep edilen belgeleri/alanları tamamlamak veya düzeltmek.
+- Chatbot yönlendirmesi: “Eksik kalemler için operasyon ekibiyle paylaşım yapınız.”
+
+Durum: Planlama Aşamasında
+- Anlamı: Rota, araç uygunluğu, sürüş planı ve zamanlama çalışması yapılıyor.
+- Olası nedenler: Liman randevusu, şehir içi kısıtlar, yük özelliği, ekipman seçimi, araç bulunabilirliği.
+- Müşteri ne beklemeli: Planlanan teslim tarihi/slot netleşmeye başlar.
+- Tipik sonraki adım: Araç atama.
+
+Durum: Araç Atandı
+- Anlamı: Sevkiyat için uygun TIR/çekici ve operasyon planı eşleştirildi.
+- Müşteri ne beklemeli: Yükleme/liman çıkış adımlarının hızlanması.
+- Not: Araç atanması, yüklemenin tamamlandığı anlamına gelmez.
+
+Durum: Yükleme Yapıldı
+- Anlamı: Konteyner araca alındı ve fiziksel yükleme tamamlandı.
+- Olası ek kontroller: Mühür, konteyner hasar kontrolü, evrak eşleşmesi.
+- Müşteri ne beklemeli: Liman çıkış işlemleri ve yola çıkışa geçiş.
+
+Durum: Limandan Çıkış Yaptı
+- Anlamı: Konteyner liman sahasından çıkış yaptı, karayolu sevkiyatı başladı.
+- Müşteri ne beklemeli: “Yolda” durumuna geçiş ve rota ilerlemesi.
+- Not: Çıkış sonrası şehir/rota kısıtları teslim süresini etkileyebilir.
+
+Durum: Yolda
+- Anlamı: Araç varış şehrine doğru transit durumda.
+- Müşteri ne beklemeli: Tahmini varış yaklaşırken bilgilendirme.
+- Chatbot dili: “Planlanan teslim tarihi değişebilir, güncel bilgi için sistem kontrolü önerilir.”
+
+Durum: Teslimata Yaklaşıyor
+- Anlamı: Araç varış noktasına/şehre ulaşıyor veya son kilometre planlaması yapılıyor.
+- Olası adımlar: Depo randevusu, saha giriş prosedürleri, iletişim teyidi.
+- Müşteri ne beklemeli: Teslimat saat aralığı netleşebilir (kesin saat taahhüdü verilmez).
+
+Durum: Teslim Edildi
+- Anlamı: Konteyner teslimat noktasına ulaştı ve teslim süreci tamamlandı.
+- Olası kayıtlar: Teslim teyidi, evrak kapanışı, iade ekipman planı (varsa).
+- Müşteri ne beklemeli: Operasyon kapanış bilgisi ve gerekirse doküman paylaşımı süreci.
+
+Durum: Gecikmeli
+- Anlamı: Planlanan tarihe göre gecikme riski oluştu veya gecikme gerçekleşti.
+- Olası nedenler: Liman yoğunluğu, evrak eksikliği, yol/iklim, trafik, araç arızası, güvenlik kontrolleri, randevu değişimi.
+- Müşteri ne beklemeli: Gecikme nedeni ve revize tahmin (kesin taahhüt değil).
+- Chatbot yönlendirmesi: “Güncel durum ve revize tahmin için operasyon ekibiyle iletişime geçiniz.”
+
+Durum: İptal Edildi
+- Anlamı: Sipariş operasyonel olarak durduruldu ve sevkiyat planından çıkarıldı.
+- Olası nedenler: Müşteri talebi, evrak tamamlanamaması, planlama uygun olmaması, ticari/operasyonel karar.
+- Müşteri ne beklemeli: İptal gerekçesi ve varsa yeni sipariş açma yönlendirmesi.
+- Not: Ücret/ceza gibi ticari konular chatbot tarafından bağlayıcı şekilde yanıtlanmamalıdır.
+
+Durumlar Arası Tipik Geçiş Mantığı (Özet)
+- Sipariş Alındı -> Belgeler Bekleniyor (eksik varsa)
+- Sipariş Alındı -> Planlama Aşamasında (bilgiler tam ise)
+- Planlama Aşamasında -> Araç Atandı
+- Araç Atandı -> Yükleme Yapıldı
+- Yükleme Yapıldı -> Limandan Çıkış Yaptı
+- Limandan Çıkış Yaptı -> Yolda
+- Yolda -> Teslimata Yaklaşıyor
+- Teslimata Yaklaşıyor -> Teslim Edildi
+- Her aşama -> Gecikmeli (risk/gerçekleşen gecikme)
+- Her aşama -> İptal Edildi (iptal kararı)
+
+Chatbot Dil Standardı (Kısa)
+- Bilgi verir: “Mevcut kayıtlara göre durum: …”
+- Varsayım yapmaz: “Sistemde doğrulama yapılmadan kesin konuşamam.”
+- Yönlendirir: “Güncel bilgi için sipariş numaranız ile tekrar kontrol ediniz / operasyon ekibiyle iletişime geçiniz.”

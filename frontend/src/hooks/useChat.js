@@ -6,21 +6,23 @@ const API_URL = "http://localhost:8004/chat";
 
 function safeExtractReply(data) {
   if (!data) return "";
-  if (typeof data === "string") return data;
-
+  
+  // 1. Backend'den gelen objenin içindeki metni al (Öncelikli)
   if (typeof data === "object") {
+    // Senin Python'da return {"answer": ...} olarak gönderdiğin kısım:
+    if (typeof data.answer === "string") return data.answer; 
+    
+    // Diğer olasılıklar
     if (typeof data.response === "string") return data.response;
     if (typeof data.reply === "string") return data.reply;
-    if (typeof data.message === "string") return data.message;
-    if (typeof data.text === "string") return data.text;
-    if (typeof data.output === "string") return data.output;
   }
 
-  try {
-    return JSON.stringify(data, null, 2);
-  } catch {
-    return String(data);
-  }
+  // 2. Eğer zaten düz metinse direkt dön
+  if (typeof data === "string") return data;
+
+  // 3. EN ÖNEMLİ KISIM: Buradaki JSON.stringify(data) kısmını kaldırıyoruz 
+  // çünkü o tırnakları bu satır ekliyor.
+  return "Yanıt işlenemedi."; 
 }
 
 function extractMeta(data) {
@@ -82,7 +84,7 @@ export function useChat() {
       const res = await axios.post(
         API_URL,
         { prompt: trimmed, context: context && typeof context === "object" ? context : undefined },
-        { timeout: 30000, headers: { "Content-Type": "application/json" } }
+        { timeout: 60000, headers: { "Content-Type": "application/json" } }
       );
 
       if (rid !== requestIdRef.current) return { ok: false, reply: "", meta: null };

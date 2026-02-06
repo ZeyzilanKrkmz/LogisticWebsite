@@ -1,0 +1,35 @@
+DOSYA: load_types.txt
+
+KONU: Yük Türleri ve Taşıma Özellikleri
+
+STANDART YÜK
+
+Standart yük; konteyner ölçülerine ve yasal ağırlık limitlerine uygun, özel izin gerektirmeyen yüklerdir.
+Genellikle 20 DC veya 40 DC konteynerler ile taşınır.
+
+STANDART DIŞI YÜK (OVERSIZE / OVERWEIGHT)
+
+- Konteyner ölçülerini aşan yükler
+- Ağırlık limitlerini geçen yükler
+- Özel bağlama ve ekipman gerektiren yükler
+
+Bu yükler için Flat Rack, Open Top veya lowbed araçlar kullanılır ve özel izinler gerekebilir.
+
+TEHLİKELİ MADDE (ADR)
+
+Yanıcı, patlayıcı, kimyasal veya çevreye zararlı yüklerdir.
+ADR mevzuatına uygun araç, sürücü ve belgeler zorunludur.
+
+SOĞUK ZİNCİR YÜKLER
+
+Isı kontrollü taşınması gereken gıda, ilaç ve kimyasal ürünlerdir.
+Reefer konteyner ve frigo araç kullanılır.
+
+MÜŞTERİ BEYANININ ÖNEMİ
+
+Yük türünün doğru beyan edilmemesi;
+- Fiyat değişikliğine
+- Operasyonel gecikmelere
+- Yasal yaptırımlara
+
+neden olabilir.

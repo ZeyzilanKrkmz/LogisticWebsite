@@ -1,0 +1,68 @@
+order_tracking_logic.txt
+
+Amaç
+- Sipariş takibinin nasıl çalıştığını, chatbotun hangi verileri sunabileceğini ve güvenlik/gizlilik kurallarını tanımlar.
+- Not: Chatbot, gerçek zamanlı API/veri entegrasyonu yoksa tahmin üretmez ve “güncel kontrol” yönlendirmesi yapar.
+
+Sipariş Takibi Nedir
+- Sipariş takibi; sipariş numarasına bağlı kayıt üzerinden “durum” ve “milestone” (aşama) bilgisinin görüntülenmesidir.
+- Takip; liman çıkışlı konteyner TIR operasyonunun süreç adımlarına göre ilerler.
+- Her sipariş; tek seferlik, süreç bazlı bir operasyon olarak ele alınır.
+
+Temel Takip Girdisi: Sipariş Numarası
+- Sipariş numarası, tekil referanstır.
+- Chatbot, mümkün olan en doğru yanıt için sipariş numarası ister.
+- Sipariş numarası yoksa: Genel süreç bilgisi verilir, spesifik durum verilmez.
+
+Siparişe Bağlı Görülebilecek Temel Alanlar (Örnek)
+- Sipariş numarası
+- Yük tipi (genel tanım)
+- Konteyner türü (örn. 20DC/40HC gibi sınıflandırma)
+- Çıkış limanı
+- Varış şehri
+- Araç tipi (TIR/çekici-konteyner taşımaya uygun ekipman)
+- Planlanan teslim tarihi (tahmini)
+- Güncel durum (sipariş yaşam döngüsü durumu)
+- Özel notlar (ADR, oversize/gabari dışı, özel izin ihtiyacı, randevu vb.)
+
+Chatbot Ne Yapabilir
+- Sipariş numarasına göre kayıt var/yok bilgisini söyleyebilir.
+- Güncel durumu ve durum açıklamasını paylaşabilir.
+- Planlanan teslim tarihi alanı varsa “tahmini” olarak iletebilir.
+- Süreçte sıradaki tipik adımı açıklayabilir (genel akış olarak).
+- Evrak eksikliği uyarısını “Belge/alan eksik olabilir” şeklinde ifade edebilir.
+- Gecikme durumunda genel neden kategorileri sunabilir (kesin neden iddia etmeden).
+- ADR/oversize gibi notlar varsa “özel işlem/izin gerekebilir” uyarısı verebilir.
+
+Chatbot Ne Yapamaz (Kısıtlar)
+- Gerçek zamanlı konum/GPS takibi varmış gibi konuşamaz.
+- Kesin teslim saati veya hukuken bağlayıcı termin taahhüdü veremez.
+- Sürücü kişisel bilgisi, telefon, kimlik gibi verileri paylaşamaz.
+- Araç plakası/şoför adı gibi hassas operasyon verilerini doğrulama olmadan paylaşamaz.
+- Ticari şartlar (fiyat, ceza, tazmin) konusunda bağlayıcı karar/yanıt veremez.
+- Gümrük/kurum işlemleri hakkında kesin sonuç beyan edemez (varsa sadece “süreç etkileyebilir” der).
+
+Takip Yanıtı Mantığı (Önerilen Akış)
+- 1) Kullanıcıdan sipariş numarasını al.
+- 2) Sipariş numarası formatı uygunsuzsa: “Sipariş numaranızı kontrol edip tekrar deneyiniz.”
+- 3) Kayıt bulunamazsa: “Bu numarayla eşleşen kayıt bulunamadı. Sipariş numaranız ile tekrar kontrol ediniz.”
+- 4) Kayıt bulunursa: Durum + planlanan teslim tarihi (varsa) + kısa açıklama sun.
+- 5) Durum “Belgeler Bekleniyor” ise: Eksik/uyumsuz bilgi olasılığını söyle ve operasyon ekibine yönlendir.
+- 6) Durum “Gecikmeli” ise: Genel gecikme faktörlerini belirt, revize bilgi için yönlendir.
+- 7) Durum “İptal Edildi” ise: İptal edildi bilgisini ilet, yeni talep için yönlendir.
+
+Güvenlik ve Gizlilik İlkeleri
+- Asgari bilgi paylaşımı: Kullanıcının sorusunu yanıtlamak için gerekli minimum alanlar paylaşılır.
+- Kişisel veri koruması: Sürücü ve üçüncü taraf kişisel verileri paylaşılmaz.
+- Operasyon güvenliği: Plaka, canlı konum, rota detayı gibi bilgiler sadece yetkili kanallardan paylaşılmalıdır.
+- Sipariş sahibi doğrulaması: Şüpheli durumlarda kullanıcıdan ek doğrulama istenir veya operasyon ekibine yönlendirilir.
+- Kayıt doğrulaması yoksa: Chatbot varsayım yapmaz, “sistem üzerinden kontrol” ifadesi kullanır.
+
+Belirsizlikte Kullanılacak Standart Cümleler
+- “Güncel bilgi için operasyon ekibiyle iletişime geçiniz.”
+- “Sipariş numaranız ile tekrar kontrol ediniz.”
+- “Sistemde doğrulama olmadan kesin bilgi paylaşamam.”
+- “Planlanan teslim tarihi tahminidir; koşullara göre değişebilir.”
+
+Örnek Yanıt Şablonu (Embedding-Dostu)
+- “Sipariş No: {X}. Güncel durum: {Durum}. Açıklama: {Kısa açıklama}. Planlanan teslim tarihi: {Tarih varsa ‘tahmini’}. Güncel kontrol için sipariş numaranız ile tekrar sorgulayabilirsiniz.”

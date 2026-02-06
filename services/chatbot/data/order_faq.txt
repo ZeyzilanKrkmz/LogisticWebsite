@@ -1,0 +1,76 @@
+order_faq.txt
+
+Amaç
+- Liman çıkışlı konteyner TIR taşımacılığında sipariş takibine dair sık sorulan sorulara kısa ve kurumsal yanıtlar sağlar.
+- Yanıtlar; bağlayıcı olmayan, bilgilendirici ve yönlendirici bir dilde yazılmıştır.
+
+S: Siparişim hangi aşamada?
+C: Sipariş numaranızla sorgulama yaparak “güncel durum” bilgisini paylaşabilirim. Sipariş numaranız ile tekrar kontrol ediniz.
+
+S: Araç atandı mı?
+C: Durum “Araç Atandı” ise aracın operasyon planına eşleştiği anlamına gelir. Güncel kayıt için sipariş numaranız ile sorgulayınız.
+
+S: Yüküm yolda mı?
+C: Durum “Limandan Çıkış Yaptı” veya “Yolda” ise sevkiyat transit sürecindedir. Gerçek zamanlı konum bilgisi veremem; güncel durum için sistem kontrolü önerilir.
+
+S: Teslimat gecikti mi?
+C: Durum “Gecikmeli” görünüyorsa planlanan tarihe göre gecikme riski/gerçekleşmesi olabilir. Netleştirmek için operasyon ekibiyle iletişime geçiniz.
+
+S: Belgeler eksik mi?
+C: Durum “Belgeler Bekleniyor” ise operasyonun ilerlemesi için gerekli bilgi/evrak seti tamamlanmamış olabilir. Hangi kalemlerin eksik olduğu için operasyon ekibiyle paylaşım yapınız.
+
+S: Tahmini teslim tarihi nedir?
+C: Kayıtta “planlanan teslim tarihi” varsa tahmini olarak iletebilirim. Bu tarih; trafik, liman yoğunluğu ve randevu gibi faktörlerle değişebilir.
+
+S: Siparişim neden beklemede görünüyor?
+C: Genellikle “Belgeler Bekleniyor” veya “Planlama Aşamasında” durumlarında bekleme olabilir. Evrak tamamlama, araç bulunabilirliği ve liman/randevu planlaması etkileyebilir.
+
+S: Siparişim “Planlama Aşamasında” ne demek?
+C: Rota, ekipman uygunluğu, zamanlama ve operasyon planı hazırlanıyor demektir. Araç ataması bu aşamadan sonra yapılır.
+
+S: “Araç Atandı” yazıyor ama yükleme olmadı, normal mi?
+C: Evet. Araç ataması, yüklemenin tamamlandığı anlamına gelmez. Yükleme; liman/terminal operasyonu ve evrak eşleşmesi sonrası gerçekleşir.
+
+S: “Yükleme Yapıldı” ne demek?
+C: Konteynerin araca alındığı ve fiziksel yükleme işleminin tamamlandığı anlamına gelir. Sonrasında liman çıkış işlemleri ve sevk başlar.
+
+S: “Limandan Çıkış Yaptı” ile “Yolda” aynı mı?
+C: “Limandan Çıkış Yaptı” sevkiyatın liman sahasından çıktığını belirtir. “Yolda” ise transit sürecin devam ettiğini ifade eder.
+
+S: “Teslimata Yaklaşıyor” ne anlama gelir?
+C: Varış şehrine yaklaşma veya son kilometre planlamasının yapılmasıdır. Depo randevusu ve saha giriş prosedürleri bu aşamada etkili olabilir.
+
+S: Siparişim teslim edildi mi nasıl anlarım?
+C: Durum “Teslim Edildi” ise teslim süreci tamamlanmış görünür. Resmi teyit/doküman için operasyon ekibiyle iletişime geçiniz.
+
+S: ADR yük nedir, özel işlem gerekir mi?
+C: ADR, tehlikeli madde taşımacılığına ilişkin sınıflandırmadır. ADR notu varsa özel ekipman, eğitimli sürücü ve ek prosedürler gerekebilir. Kesin gereklilik için operasyon ekibi doğrulaması gerekir.
+
+S: Oversize / gabari dışı yüküm var, teslim süresi etkilenir mi?
+C: Gabari dışı/oversize yüklerde güzergâh kısıtları ve izin süreçleri teslim süresini etkileyebilir. Güncel plan için operasyon ekibiyle iletişime geçiniz.
+
+S: Araç tipi bu yük için uygun mu?
+C: Uygunluk; konteyner türü, yük özelliği (ADR/oversize), saha koşulları ve rota kısıtlarına bağlıdır. Kayıttaki “araç tipi” alanı bilgi verir; kesin uygunluk için operasyon ekibi doğrular.
+
+S: Sipariş numaram yok, yine de kontrol edebilir misiniz?
+C: Sipariş numarası olmadan spesifik kayıt sorgulaması yapamam. Genel süreç bilgisini paylaşabilirim. Sipariş numaranız ile tekrar kontrol ediniz.
+
+S: Sipariş numarasıyla sorguladım, kayıt bulunamadı.
+C: Numara hatalı girilmiş olabilir veya kayıt henüz sisteme düşmemiş olabilir. Sipariş numaranız ile tekrar kontrol ediniz; devam ederse operasyon ekibiyle iletişime geçiniz.
+
+S: Neden teslim tarihi değişti?
+C: Liman yoğunluğu, randevu değişimi, trafik, hava koşulları, güvenlik kontrolleri ve evrak süreçleri planı etkileyebilir. Revize tahmin için operasyon ekibiyle iletişime geçiniz.
+
+S: Siparişim iptal edilmiş görünüyor, ne yapmalıyım?
+C: Durum “İptal Edildi” ise operasyon durdurulmuştur. İptal gerekçesi ve yeni talep için operasyon ekibiyle iletişime geçiniz.
+
+S: Chatbot kesin teslim saati verebilir mi?
+C: Hayır. Kesin saat taahhüdü veremem. Kayıttaki planlanan tarih/süreç bilgisi tahminidir. Güncel bilgi için operasyon ekibine danışınız.
+
+S: Şoför telefonu veya araç plakasını paylaşır mısınız?
+C: Güvenlik ve gizlilik nedeniyle bu tür bilgileri paylaşamam. Yetkili kanallar üzerinden operasyon ekibi yardımcı olabilir.
+
+Standart Yönlendirme Cümleleri
+- “Güncel bilgi için operasyon ekibiyle iletişime geçiniz.”
+- “Sipariş numaranız ile tekrar kontrol ediniz.”
+- “Sistemde doğrulama olmadan kesin bilgi paylaşamam.”

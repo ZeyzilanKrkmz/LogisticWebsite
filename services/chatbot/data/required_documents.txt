@@ -1,0 +1,29 @@
+DOSYA: required_documents.txt
+
+KONU: Taşıma İçin Gerekli Belgeler
+
+STANDART YÜKLER İÇİN
+
+- CMR taşıma senedi
+- Fatura
+- İrsaliye
+- Sigorta evrakları
+
+STANDART DIŞI YÜKLER İÇİN
+
+- CMR
+- Fatura ve irsaliye
+- Özel taşıma izin belgeleri
+- Güzergah izinleri
+
+ADR YÜKLER İÇİN
+
+- ADR uygunluk belgesi
+- ADR sürücü sertifikası
+- Tehlikeli madde taşıma evrakları
+
+EKSİK BELGE DURUMUNDA
+
+- Taşıma gecikmeleri
+- İdari para cezaları
+- Operasyonun durdurulması

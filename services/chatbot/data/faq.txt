@@ -1,0 +1,16 @@
+DOSYA: faq.txt
+
+S: Fiyatlar nasıl belirleniyor?
+C: Fiyatlar; mesafe, yük tipi, konteyner ve araç türüne göre belirlenir.
+
+S: Türkiye’nin her yerine taşıma yapıyor musunuz?
+C: Evet, liman çıkışlı olmak üzere Türkiye genelinde taşıma yapılmaktadır.
+
+S: Yük tipini belirtmek zorunlu mu?
+C: Evet, doğru fiyatlandırma ve uygun araç planlaması için zorunludur.
+
+S: ADR yük taşıyor musunuz?
+C: Evet, gerekli belge ve ekipman sağlanması koşuluyla ADR yük taşınabilir.
+
+S: Belgeler eksik olursa ne olur?
+C: Taşıma gecikebilir veya yasal yaptırımlar uygulanabilir.

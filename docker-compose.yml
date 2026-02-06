@@ -68,16 +68,17 @@ services:
   # --- CHATBOT SERVİSİ (Gemini AI Agent & Gateway) ---
   chatbot-service:
     build:
-      context: . # Kök dizini baz alıyoruz
+      context: .
       dockerfile: services/chatbot/Dockerfile
     container_name: chatbot-service
     ports:
       - "8004:8000"
     env_file: .env
     volumes:
-      - .:/app  # Bilgisayarındaki root'u konteynerdeki /app'e bağlar
+      - .:/app # Kodun canlı güncellenmesi için
     environment:
-      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - PYTHONUNBUFFERED=1 # Logların anında terminale düşmesini sağlar
+      - GROQ_API_KEY=${GROQ_API_KEY}
       - DATABASE_URL=postgresql://user:password@db:5432/logistics_app
       - REDIS_URL=redis://redis:6379/0
     depends_on:

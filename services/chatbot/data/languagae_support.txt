@@ -1,0 +1,45 @@
+DOSYA: language_support.txt
+
+KONU: Çok Dilli Yanıt Desteği ve Dil Yönlendirme Kuralları
+
+Bu chatbot, temel bilgi kaynağı olarak Türkçe hazırlanmış kurumsal lojistik dokümanlarını kullanır.
+Yanıtlar, kullanıcının tercih ettiği dile göre üretilir.
+
+DESTEKLENEN DİLLER
+
+- Türkçe (varsayılan)
+- İngilizce (English)
+- Arapça (العربية)
+- Farsça (فارسی)
+- Kürtçe (Kurmancî)
+- Rusça (Русский)
+- Yunanca (Ελληνικά)
+
+DİL ALGILAMA VE YANIT PRENSİBİ
+
+- Kullanıcının sorusu hangi dildeyse, yanıt aynı dilde verilir.
+- Teknik ve hukuki terimler anlam kaybına yol açmayacak şekilde çevrilir.
+- Türkiye lojistik mevzuatına özgü kavramlar (CMR, ADR, irsaliye vb.) gerekirse orijinal haliyle korunur.
+
+ÇEVİRİ VE İÇERİK KURALLARI
+
+- Yanıtın anlamı Türkçe kaynak dokümanla birebir uyumlu olmalıdır.
+- Yeni bilgi eklenmez, çıkarım yapılmaz.
+- Hukuki bağlayıcılık iddiası oluşturacak ifadeler kullanılmaz.
+- Fiyatlar, süreler ve operasyon detayları bilgilendirme amaçlı aktarılır.
+
+DİL BAZLI ÜSLUP
+
+- İngilizce: Kurumsal, sade, uluslararası lojistik terminolojisine uygun
+- Arapça ve Farsça: Resmi ve açıklayıcı
+- Kürtçe: Net, kısa ve sade
+- Rusça ve Yunanca: Teknik doğruluk önceliklidir
+
+ÖRNEK YÖNLENDİRME
+
+Kullanıcı dili: İngilizce  
+Yanıt dili: İngilizce  
+Kaynak içerik: shipping_rates.txt (Türkçe)
+
+Chatbot, Türkçe içeriği referans alır ve anlamı koruyarak İngilizce yanıt üretir.
+``
