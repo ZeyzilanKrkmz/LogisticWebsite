@@ -71,5 +71,7 @@ Backend: http://localhost:8004
 
 -Daha detaylı risk tahmin algoritmaları.
 
+-Scalability: Yüksek trafikli anlarda veri bütünlüğünü korumak için Redis tabanlı Distributed Locking entegrasyonu.
+
 👤 Geliştirici
 Zeynep Zilan Korkmaz
